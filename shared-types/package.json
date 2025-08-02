@@ -1,0 +1,14 @@
+{
+  "name": "@miguel-comware/shared-types-remote",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rm -rf dist"
+  },
+  "files": ["dist"],
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

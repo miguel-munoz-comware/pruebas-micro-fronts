@@ -1,0 +1,16 @@
+{
+  "name": "microfrontends",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "install:all": "npm install --prefix shared-types && npm install --prefix host && npm install --prefix remote1 && npm install --prefix remote2",
+    "build:types": "cd shared-types && npm run build",
+    "link:types": "cd shared-types && npm link && cd ../host && npm link @company/shared-types && cd ../remote1 && npm link @company/shared-types && cd ../remote2 && npm link @company/shared-types",
+    "dev": "npm run build:types && npx concurrently \"cd remote1 && npm run dev\" \"cd remote2 && npm run dev\" \"cd host && npm run dev\"",
+    "build": "npm run build:types && npm run build --prefix remote1 && npm run build --prefix remote2 && npm run build --prefix host",
+    "start": "npm run start --prefix host"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
